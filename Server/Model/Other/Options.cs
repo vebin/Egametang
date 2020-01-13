@@ -1,26 +1,15 @@
-﻿using System;
-using MongoDB.Bson;
-
-#if SERVER
+﻿#if SERVER
 using CommandLine;
 #endif
 
-namespace Model
+namespace ETModel
 {
-	public class Options: ICloneable
+	public class Options
 	{
-		[Option("appId", Required = true)]
-		public int AppId { get; set; }
-		
-		[Option("appType", Required = true)]
-		public AppType AppType { get; set; }
+		[Option("id", Required = false, Default = 1)]
+		public int Id { get; set; }
 
-		[Option("config", Required = false, DefaultValue = "Start.txt")]
+		[Option("config", Required = false, Default = "AllServer.txt")]
 		public string Config { get; set; }
-
-		public object Clone()
-		{
-			return MongoHelper.FromBson<Options>(this.ToBson());
-		}
 	}
 }

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Model
+namespace ETModel
 {
 	/// <summary>
 	/// Key Value组件用于保存一些数据
 	/// </summary>
-	public class KVComponent: Component
+	public class KVComponent: Entity
 	{
 		[BsonElement]
 		private readonly Dictionary<string, object> kv = new Dictionary<string, object>();
@@ -32,7 +32,7 @@ namespace Model
 
 		public override void Dispose()
 		{
-			if (this.Id == 0)
+			if (this.IsDisposed)
 			{
 				return;
 			}
